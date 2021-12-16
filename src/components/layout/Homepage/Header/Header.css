@@ -1,0 +1,70 @@
+@media (max-width: 680px) {
+    .container {
+        justify-content: center;
+    }
+    .header {
+        height: fit-content;
+    }
+}
+
+:root {
+    --text-color: #ffff00;
+    --text-shadow: 2px 4px #000000;
+}
+
+.header {
+    font-family: 'RuneScape UF', sans-serif;
+    width: 100%;
+    height: auto;
+    border-bottom: 3px solid black;
+}
+
+.container {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 4rem;
+}
+
+h1 {
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+    flex-grow: 1;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+li:hover {
+    text-decoration: underline;
+}
+
+ul {
+    display: flex;
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+    list-style: none;
+    gap: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.header {
+    background: linear-gradient(-45deg, #f57474, #987cff, #2370d5, #34ffd6);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+}

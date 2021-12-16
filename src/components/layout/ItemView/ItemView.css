@@ -1,0 +1,20 @@
+.item-view {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "RuneScape UF";
+}
+
+.grid-container {
+    padding-top: 100px;
+    align-self: center;
+    width:70%;
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 80% 20%;
+    overflow: hidden;
+}
+
+.grid-row-span-2 {
+    grid-row: span 2;
+}

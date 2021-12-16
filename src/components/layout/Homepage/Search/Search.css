@@ -1,0 +1,75 @@
+:root {
+    --text-color: #ffff00;
+    --text-shadow: 2px 4px #000000;
+}
+
+.homepage-title {
+    padding-top: 10%;
+    font-size: 8rem;
+    font-family: 'RuneScape UF';
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+    text-align: center;
+}
+
+.search-box {
+    display: flex;
+    margin-top: 1%;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+.homepage-submit {
+    background-color: var(--text-color);
+    opacity: .75;
+    margin-top: 1%;
+    width: 25%;
+    height: 100px;
+    border-radius: 30px;
+    outline: black solid 1.5px;
+    box-shadow: 1px 6px 5px #000000;
+    font-family: 'RuneScape UF';
+    font-size: 4rem;
+    text-decoration: underline;
+}
+
+.homepage-search {
+    height: 100px;
+    width: 50%;
+    border-radius: 50px;
+    opacity: .5;
+    outline: black solid 3px;
+    font-family: 'RuneScape UF';
+    padding-left: 30px;
+    font-size: 4rem;
+    box-shadow: 1px 6px 5px #000000;
+}
+
+@media (max-width: 680px) {
+    .homepage-search {
+        margin-top: 7.5%;
+        height: 100px;
+        width: 90%;
+        border-radius: 50px;
+        opacity: .5;
+        outline: black solid 3px;
+        font-family: 'RuneScape UF';
+        padding-left: 30px;
+        font-size: 4rem;
+    }
+
+    .homepage-submit {
+        background-color: var(--text-color);
+        opacity: .75;
+        margin-top: 5%;
+        width: 75%;
+        height: 100px;
+        border-radius: 30px;
+        outline: black solid 1.5px;
+        box-shadow: 1px 6px 5px #000000;
+        font-family: 'RuneScape UF';
+        font-size: 4rem;
+        text-decoration: underline;
+    }
+}
