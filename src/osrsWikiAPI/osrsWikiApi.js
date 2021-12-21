@@ -61,3 +61,13 @@ export const wikiTimeseries = async (id, timePeriod) => {
         console.error('Error fetching from OSRS Wiki:' + error);
     })
 }
+
+export const grabItemVolume = async (id) => {
+    return axios.get(`http://localhost:5000/api/item/${id}`)
+    .then(response => {
+        return response.data;
+    })
+    .catch(error => {
+        console.error('Error fetching volume traded data: ' + error);
+    })
+}
