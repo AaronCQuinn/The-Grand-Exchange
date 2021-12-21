@@ -1,5 +1,5 @@
 import React from 'react'
-import './StaticInfoPanel.css'
+import './ItemInfoPanel.css'
 import { data } from '../../Homepage/Search/names-ids';
 import { useParams } from 'react-router-dom';
 
@@ -22,22 +22,24 @@ const StaticInfoPanel = () => {
                 <div className="img-div" style={{backgroundImage: imgUrl}}></div>
             </div>
             <div className="static-right-col">
-                <div className='static-grid-span-3' style={{paddingLeft: '15px'}}>
+                <div className='examine-text-box' style={{paddingLeft: '15px'}}>
                     <div style={{textDecoration: 'underline'}}>Examine Text</div>
                     <br />
                     {staticData.examine}
                 </div>
-                <div className='static-info-item'>Members Only?
-                    <div> {staticData.members ? ' Yes' : " No"}</div> 
-                </div>
-                <div className='static-info-item'>Low Alch:
-                    <div>{staticData.lowalch}</div>
-                </div>
-                <div className='static-info-item'>High Alch: 
-                    <div>{staticData.highalch}</div> 
-                </div>
-                <div className='static-info-item'>GE Buy Limit: 
-                    <div>{staticData.limit}</div> 
+                <div className="static-right-col-bot">
+                    <div className='static-info-item'>Members Only?
+                        <div> {staticData.members ? ' Yes' : " No"}</div> 
+                    </div>
+                    <div className='static-info-item'>High Alch: 
+                        <div>{staticData.highalch}</div> 
+                    </div>
+                    <div className='static-info-item'>GE Buy Limit: 
+                        <div>{staticData.limit}</div> 
+                    </div>
+                    <div className='static-info-item'>Low Alch:
+                        <div>{staticData.lowalch}</div>
+                    </div>
                 </div>
             </div>
         </div>

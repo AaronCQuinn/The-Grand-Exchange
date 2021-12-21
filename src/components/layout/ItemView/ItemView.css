@@ -3,18 +3,21 @@
     display: flex;
     flex-direction: column;
     font-family: "RuneScape UF";
+    background: #283048;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */      
 }
 
 .grid-container {
-    padding-top: 100px;
+    flex: 1;
+    padding-top: 50px;
     align-self: center;
     width:70%;
     display: grid;
     gap: 25px;
-    grid-template-columns: 80% 20%;
-    overflow: hidden;
+    height: 100%;
 }
 
-.grid-row-span-2 {
-    grid-row: span 2;
+.grid-row-span-3 {
+    grid-row: span 3;
 }
