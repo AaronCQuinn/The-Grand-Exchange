@@ -1,95 +1,103 @@
-import React from 'react'
+import {React} from 'react'
 import './GraphPanel.css'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
+import { SpinnerInfinity } from 'spinners-react'
 
 const options ={
-        chart: {
-            type: 'dualaxis',
-            zoomType: 'xy',
-            borderRadius: 5,
-            shadow: true,
-            spacingTop: 15,
-            height: 50 + '%',
+      chart: {
+          zoomType: 'xy',
+          borderRadius: 5,
+          shadow: true,
+          spacing: 20,
+          height: 50 + '%',
+      },
+      response: {
+        rules: {
+          height: 100 + "%",
+        }
+      },
+      subtitle: {
+        text: 'Source: OSRS Wiki / RuneLite API'
+      },
+      xAxis: {},
+      yAxis: [{ // Primary yAxis
+        labels: {
+          data: [],
+          style: {
+            color: Highcharts.getOptions().colors[1]
+          }
         },
         title: {
-            text: 'Placeholder Title',
-        },
-        subtitle: {
-          text: 'Source: OSRS Wiki / RuneLite API'
-        },
-        xAxis: [{
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-          crosshair: true
-        }],
-        yAxis: [{ // Primary yAxis
-          labels: {
-            format: 'Placeholder',
-            style: {
-              color: Highcharts.getOptions().colors[1]
-            }
-          },
-          title: {
-            text: 'Temperature',
-            style: {
-              color: Highcharts.getOptions().colors[1]
-            }
+          text: 'Gold Price',
+          style: {
+            color: Highcharts.getOptions().colors[1]
           }
-        }, { // Secondary yAxis
-          title: {
-            text: 'Placeholder',
-            style: {
-              color: Highcharts.getOptions().colors[0]
-            }
-          },
-          labels: {
-            format: 'Placeholder',
-            style: {
-              color: Highcharts.getOptions().colors[0]
-            }
-          },
-          opposite: true
-        }],
-        tooltip: {
-          shared: true
-        },
-        legend: {
-          layout: 'vertical',
-          align: 'left',
-          x: 120,
-          verticalAlign: 'top',
-          y: 100,
-          floating: true,
-          backgroundColor:
-            Highcharts.defaultOptions.legend.backgroundColor || // theme
-            'rgba(255,255,255,0.25)'
-        },
-        series: [{
-          name: 'Volume Sold at High Price',
-          type: 'column',
-          yAxis: 1,
-          data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-          tooltip: {
-            valueSuffix: ' mm'
+        }
+      }, { // Secondary yAxis
+        title: {
+          text:'',
+          style: {
+            color: Highcharts.getOptions().colors[0]
           }
-      
-        }, {
-          name: 'Temperature',
-          type: 'spline',
-          data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
-          tooltip: {
-            valueSuffix: '°C'
-          }
-        }]
+        },
+        opposite: true
+      }],
+      tooltip: {
+        shared: true
+      },
+  }
+
+const GraphPanel = ({ timeSeriesData, itemName }) => {
+
+    let avgHighArray = [];
+    let avgLowArray = [];
+    let xAxisPlot = [];
+    function buildAxis() {
+      timeSeriesData.forEach(element => {
+        avgHighArray.push(element.avgHighPrice);
+        avgLowArray.push(element.avgLowPrice);
+        xAxisPlot.push(new Date(element.timestamp * 1000).toLocaleDateString())
+      });
     }
 
+    if (timeSeriesData) { buildAxis(); }
 
+    let xAxis = [{
+      categories: xAxisPlot,
+      crosshair: true
+    }]
+    let xAxisHighPrice = {
+      name: 'High Price',
+      type: 'spline',
+      data: avgHighArray,
+      tooltip: {
+        valueSuffix: "gp"
+      }
+    }
+    let xAxisLowPrice = {
+      name: 'Low Price',
+      type: 'spline',
+      data: avgLowArray,
+      tooltip: {
+        valueSuffix: "gp"
+      }
+    }
+    let title = {
+      text: itemName,
+    }
 
-const GraphPanel = () => {
-    return (
-        <HighchartsReact highcharts={Highcharts} options={options} />
-    )
+    options.series = [xAxisHighPrice, xAxisLowPrice];
+    options.xAxis = xAxis;
+    options.title = title;
+
+    if (timeSeriesData) {
+      return (
+          <HighchartsReact highcharts={Highcharts} options={options} />
+      )
+    } else {
+      return <SpinnerInfinity />
+    }
 }
 
 export default GraphPanel
