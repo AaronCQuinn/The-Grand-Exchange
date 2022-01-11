@@ -11,7 +11,7 @@ const Search = () => {
 
     async function onSubmit(e) {
         e.preventDefault(); // Prevent default form submission.
-        const itemToFind = (data.find(item => item.name === searchTerm)); // Search items for metadata.
+        const itemToFind = (data.find(item => item.search_term === searchTerm)); // Search items for metadata.
         if (itemToFind) {
             navigate(`/item/${itemToFind.id}`, {replace: true});
         }
@@ -22,7 +22,7 @@ const Search = () => {
             <div className="homepage-title">The Grand Exchange</div>
             <form className="search-box" onSubmit={onSubmit}>
                 <input type="text" placeholder="Enter an item..." className='homepage-search' 
-                onChange={(e) => {setSearchTerm(e.target.value)}} />
+                onChange={(e) => {setSearchTerm(e.target.value.toLowerCase())}} />
                 <button type="submit" className='homepage-submit'>Submit</button>
             </form>
         </div>

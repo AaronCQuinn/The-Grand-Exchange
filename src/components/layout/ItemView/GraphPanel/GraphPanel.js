@@ -4,18 +4,13 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import { SpinnerInfinity } from 'spinners-react'
 
-const options ={
+const options = {
       chart: {
           zoomType: 'xy',
           borderRadius: 5,
           shadow: true,
           spacing: 20,
-          height: 50 + '%',
-      },
-      response: {
-        rules: {
-          height: 100 + "%",
-        }
+          height: 500,
       },
       subtitle: {
         text: 'Source: OSRS Wiki / RuneLite API'
@@ -65,7 +60,11 @@ const GraphPanel = ({ timeSeriesData, itemName }) => {
 
     let xAxis = [{
       categories: xAxisPlot,
-      crosshair: true
+      crosshair: true,
+      labels: {
+        step: 5,
+        rotation: -60
+      }
     }]
     let xAxisHighPrice = {
       name: 'High Price',
