@@ -5,6 +5,7 @@ import Header from '../Homepage/Header/Header'
 import ItemInfoPanel from './ItemInfoPanel/ItemInfoPanel'
 import ItemFinancialPanel from './ItemFinancialPanel/ItemFinancialPanel'
 import GraphPanel from './GraphPanel/GraphPanel'
+import MiniSearchBar from './MiniSearchBar/MiniSearchBar'
 // Css imports.
 import './ItemView.css'
 // Accessory imports.
@@ -34,6 +35,7 @@ const ItemView = () => {
             <div className="item-view">
                 <Header />
                 <div className="grid-container">
+                    <MiniSearchBar />
                     <ItemInfoPanel staticData={staticData} />
                     <ItemFinancialPanel id={Params.id} finPanelData={itemWikiData} itemVolumeData={itemVolumeData} geLimit={staticData.limit}/>
                     <GraphPanel id={Params.id} timeSeriesData={itemGraphData} itemName={staticData.name}/>

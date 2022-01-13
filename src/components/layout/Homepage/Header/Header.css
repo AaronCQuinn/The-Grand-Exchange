@@ -5,6 +5,15 @@
     .header {
         height: fit-content;
     }
+    .tge-header-title {
+        display: none;
+    }
+    .tge-header-links {
+        display: flex;
+        flex-grow: 1;
+        list-style: none;
+        justify-content: space-around;
+    }
 }
 
 :root {
@@ -12,7 +21,7 @@
     --text-shadow: 2px 4px #000000;
 }
 
-.header {
+.tge-header {
     font-family: 'RuneScape UF', sans-serif;
     width: 100%;
     height: auto;
@@ -23,33 +32,30 @@
     z-index: 2;
 }
 
-.container {
+.tge-header-container {
     margin: auto;
     display: flex;
     align-items: center;
     width: 70%;
-    height: 4rem;
+    padding: 1rem 0;
 }
 
-h1 {
+.tge-header-title {
     color: var(--text-color);
     text-shadow: var(--text-shadow);
     flex-grow: 1;
-}
-
-a {
-    color: var(--text-color);
+    font-size: 2em;
     text-decoration: none;
-    z-index: 99;
 }
 
-ul {
+.tge-header-links {
     display: flex;
-    color: var(--text-color);
-    text-shadow: var(--text-shadow);
     list-style: none;
-    gap: 3rem;
-    font-size: 1.5rem;
+    gap: 2rem;
+}
+
+.tge-login-modal-footer {
+    display: flex;
 }
 
 
